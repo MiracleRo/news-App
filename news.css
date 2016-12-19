@@ -46,7 +46,10 @@ body{
 .news-del:hover{
     cursor: pointer;
 }
-.link-new {
+.link-news {
     cursor: pointer;
     color: black;
+}
+button{
+    width: 16%;
 }
