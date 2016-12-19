@@ -1,0 +1,13 @@
+.pic_div{
+    display: inline-block;
+    width: 100px;
+    height: 60px;
+}
+.new_pic{
+    height: 60px;
+}
+.news_title{
+    display: inline-block;
+    width: 200px;
+    font-size: 13px;
+}
