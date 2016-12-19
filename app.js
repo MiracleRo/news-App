@@ -181,16 +181,19 @@ var getNews = function(){
   };
 };
 function putNews(data){
+  console.log(data)
     if(data.picUrl==''){
       data.picUrl='img/nopic.png';
     }
-    var news_div = document.createElement('div');
-    news_div.className='news-div';
-    news_div.innerHTML='<div class="news-con">'+
+    var news_link = document.createElement('a');
+    news_link.setAttribute('href',data.url);
+    news_link.className='link-news';
+    news_link.innerHTML='<div class="news-div"><div class="news-con">'+
         '<div class="pic-div"><img class="news-pic" src='+data.picUrl+'/></div>'+
         '<div class="news-title">'+data.title+'</div><span class="news-description">'
-        +data.description+'</span><div class="news-del"><img src="img/delete.png"></div></div>'
-   document.body.appendChild(news_div);
+        +data.description+'</span><div class="news-del"><img src="img/delete.png"></div></div></div>'
+   document.body.appendChild(news_link);
+
   }
 var newsApp = new getNews();
 var wechat = document.getElementById('wechat');
