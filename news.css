@@ -1,13 +1,47 @@
-.pic_div{
+body{
+    font-family: 微软雅黑;
+}
+.news-div{
+    border-bottom: 1px solid #E1EACD;
+}
+.news-con{
+    height:65px;
+    width: 305px;
+}
+.pic-div{
     display: inline-block;
     width: 100px;
     height: 60px;
 }
-.new_pic{
-    height: 60px;
+.news-pic{
+    height: 100%;
+    width: 100%;
 }
-.news_title{
+.news-title{
     display: inline-block;
     width: 200px;
-    font-size: 13px;
+    font-size: 12px;
+    float: right;
+}
+.news-description{
+    display: inline-block;
+    position: relative;
+    left: 105px;
+    top: -24px;
+    font-size: 10px;
+    color: lightgray;
+}
+.news-del img{
+    width: 20px;
+    height: 20px;
+}
+.news-del{
+    position: relative;
+    left: 282px;
+    top: -40px;
+    width: 25px;
+    height: 25px;
+}
+.news-del:hover{
+    cursor: pointer;
 }

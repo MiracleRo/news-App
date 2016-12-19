@@ -3,6 +3,7 @@
  */
 var getNews = function(){
   //首页新闻
+  this.channle = 'fisrtpage'
   this.getFirstPage = function () {
     $.ajax({
       url: 'http://apis.baidu.com/txapi/weixin/wxhot',
@@ -81,7 +82,9 @@ var getNews = function(){
         'apikey': 'eb564ae4c97116638a9e38365d83ec3c'
       },
       success: function (data) {
-        console.log(data);
+        for (var i = 0 ; i<data.newslist.length; i++){
+          putNews(data.newslist[i]);
+        }
       },
       error: function (err) {
         console.log(err)
@@ -101,7 +104,9 @@ var getNews = function(){
         'apikey': 'eb564ae4c97116638a9e38365d83ec3c'
       },
       success: function (data) {
-        console.log(data);
+        for (var i = 0 ; i<data.newslist.length; i++){
+          putNews(data.newslist[i]);
+        }
       },
       error: function (err) {
         console.log(err)
@@ -121,7 +126,9 @@ var getNews = function(){
         'apikey': 'eb564ae4c97116638a9e38365d83ec3c'
       },
       success: function (data) {
-        console.log(data);
+        for (var i = 0 ; i<data.newslist.length; i++){
+          putNews(data.newslist[i]);
+        }
       },
       error: function (err) {
         console.log(err)
@@ -141,7 +148,9 @@ var getNews = function(){
         'apikey': 'eb564ae4c97116638a9e38365d83ec3c'
       },
       success: function (data) {
-        console.log(data);
+        for (var i = 0 ; i<data.newslist.length; i++){
+          putNews(data.newslist[i]);
+        }
       },
       error: function (err) {
         console.log(err)
@@ -161,7 +170,9 @@ var getNews = function(){
         'apikey': 'eb564ae4c97116638a9e38365d83ec3c'
       },
       success: function (data) {
-        console.log(data);
+        for (var i = 0 ; i<data.newslist.length; i++){
+          putNews(data.newslist[i]);
+        }
       },
       error: function (err) {
         console.log(err)
@@ -172,12 +183,14 @@ var getNews = function(){
 function putNews(data){
     if(data.picUrl==''){
       data.picUrl='img/nopic.png';
-      console.log(data.picUrl);
     }
-  console.log(data.picUrl);
-    var new_div = document.createElement('div');
-    new_div.innerHTML='<div class="news-con"><div class="pic_div"><img class="new_pic" src='+data.picUrl+'/></div><div class="news_title">'+data.title+'</div><span class="new_description">'+data.description+'</span></div>'
-   document.body.appendChild(new_div);
+    var news_div = document.createElement('div');
+    news_div.className='news-div';
+    news_div.innerHTML='<div class="news-con">'+
+        '<div class="pic-div"><img class="news-pic" src='+data.picUrl+'/></div>'+
+        '<div class="news-title">'+data.title+'</div><span class="news-description">'
+        +data.description+'</span><div class="news-del"><img src="img/delete.png"></div></div>'
+   document.body.appendChild(news_div);
   }
 var newsApp = new getNews();
 var wechat = document.getElementById('wechat');
