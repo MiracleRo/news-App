@@ -29,15 +29,15 @@ var getNews = function() {
             }
         });
     };
-    //奇闻新闻
-    this.getStoryNews = function() {
-        num = 1;
+    //娱乐新闻
+    this.getAmusement = function() {
+        num = 1
         $.ajax({
-            url: 'http://apis.baidu.com/txapi/qiwen/qiwen',
+            url: 'http://apis.baidu.com/txapi/huabian/newtop',
             type: "GET",
             data: {
                 'num': 10,
-                'page': 1
+                'page': 1,
             },
             headers: {
                 'apikey': 'eb564ae4c97116638a9e38365d83ec3c'
@@ -54,6 +54,7 @@ var getNews = function() {
     };
     //体育新闻
     this.getSportNews = function() {
+        num = 2;
         $.ajax({
             url: 'http://apis.baidu.com/txapi/tiyu/tiyu',
             type: "GET",
@@ -97,32 +98,9 @@ var getNews = function() {
             }
         });
     };
-    //娱乐新闻
-    this.getAmusement = function() {
-        num = 4
-        $.ajax({
-            url: 'http://apis.baidu.com/txapi/huabian/newtop',
-            type: "GET",
-            data: {
-                'num': 10,
-                'page': 1,
-            },
-            headers: {
-                'apikey': 'eb564ae4c97116638a9e38365d83ec3c'
-            },
-            success: function(data) {
-                for (var i = 0; i < data.newslist.length; i++) {
-                    putNews(data.newslist[i], channles[num]);
-                }
-            },
-            error: function(err) {
-                console.log(err)
-            }
-        });
-    };
     //国际新闻
     this.getInter = function() {
-        num = 5;
+        num = 4;
         $.ajax({
             url: 'http://apis.baidu.com/txapi/world/world',
             type: "GET",
@@ -143,11 +121,34 @@ var getNews = function() {
             }
         });
     };
-    //苹果新闻
-    this.getApple = function() {
-        num = 6
+    //奇闻新闻
+    this.getStoryNews = function() {
+        num = 5;
         $.ajax({
-            url: 'http://apis.baidu.com/txapi/apple/apple',
+            url: 'http://apis.baidu.com/txapi/qiwen/qiwen',
+            type: "GET",
+            data: {
+                'num': 10,
+                'page': 1
+            },
+            headers: {
+                'apikey': 'eb564ae4c97116638a9e38365d83ec3c'
+            },
+            success: function(data) {
+                for (var i = 0; i < data.newslist.length; i++) {
+                    putNews(data.newslist[i], channles[num]);
+                }
+            },
+            error: function(err) {
+                console.log(err)
+            }
+        });
+    };
+    //生活与健康新闻
+    this.getHealth = function() {
+        num = 6;
+        $.ajax({
+            url: 'http://apis.baidu.com/txapi/health/health',
             type: "GET",
             data: {
                 'num': 10,
@@ -166,11 +167,11 @@ var getNews = function() {
             }
         });
     };
-    //生活与健康新闻
-    this.getHealth = function() {
+    //苹果新闻
+    this.getApple = function() {
         num = 7;
         $.ajax({
-            url: 'http://apis.baidu.com/txapi/health/health',
+            url: 'http://apis.baidu.com/txapi/apple/apple',
             type: "GET",
             data: {
                 'num': 10,
@@ -217,23 +218,30 @@ $(document).on("pagebeforeshow", "#main", function() {
     return newsApp.getFirstPage();
 });
 $(document).on("pagebeforeshow", "#main2", function() {
+    $('#main2').innerHTML = '';
     return newsApp.getAmusement();
 });
 $(document).on("pagebeforeshow", "#main3", function() {
+    $('#main3').innerHTML = '';
     return newsApp.getSportNews();
 });
 $(document).on("pagebeforeshow", "#main4", function() {
+    $('#main4').innerHTML = '';
     return newsApp.getTechnology();
 });
 $(document).on("pagebeforeshow", "#main5", function() {
+    $('#main5').innerHTML = '';
     return newsApp.getInter();
 });
 $(document).on("pagebeforeshow", "#main6", function() {
+    $('#main6').innerHTML = '';
     return newsApp.getStoryNews();
 });
 $(document).on("pagebeforeshow", "#main7", function() {
+    $('#main7').innerHTML = '';
     return newsApp.getHealth();
 });
 $(document).on("pagebeforeshow", "#main8", function() {
+    $('#main8').innerHTML = '';
     return newsApp.getApple();
 });
