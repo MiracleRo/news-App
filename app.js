@@ -183,7 +183,7 @@ var getNews = function() {
 
 function putNews(data) {
     if (data.picUrl == '') {
-        data.picUrl = 'img/nopic.png';
+        data.picUrl = 'img/nopic.jpg';
     }
     var news_link = document.createElement('a');
     news_link.setAttribute('href', data.url);
@@ -193,10 +193,10 @@ function putNews(data) {
         '<div class="pic-div"><img class="news-pic" src=' + data.picUrl + '/></div>' +
         '<div class="news-title">' + data.title + '</div><span class="news-description">' + data.description + '</span><div class="news-del"><img src="img/delete.png"></div></div></div>'
     news_content.appendChild(news_link);
-      var news_img = document.getElementsByTagName('img');
+    var news_img = document.getElementsByTagName('img');
     for (var i = 0; i < news_img.length; i++) {
         news_img[i].onerror = function() {
-            this.src='img/nopic.png'
+            this.src = 'img/nopic.jpg'
         }
     }
 }
@@ -209,11 +209,11 @@ var inter = document.getElementById('inter');
 var apple = document.getElementById('apple');
 var health = document.getElementById('health');
 var amusement = document.getElementById('amusement');
-wechat.onclick = newsApp.getFirstPage;
-story.onclick = newsApp.getStoryNews;
-sport.onclick = newsApp.getSportNews;
-technology.onclick = newsApp.getTechnology;
-amusement.onclick = newsApp.getAmusement;
-inter.onclick = newsApp.getInter;
-apple.onclick = newsApp.getApple;
-health.onclick = newsApp.getHealth;
+// wechat.onclick = newsApp.getFirstPage;
+// story.onclick = newsApp.getStoryNews;
+// sport.onclick = newsApp.getSportNews;
+// technology.onclick = newsApp.getTechnology;
+// amusement.onclick = newsApp.getAmusement;
+// inter.onclick = newsApp.getInter;
+// apple.onclick = newsApp.getApple;
+// health.onclick = newsApp.getHealth;
