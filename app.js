@@ -1,10 +1,14 @@
 /**
  * Created by admin on 2016/12/16.
  */
+var channles = ['news_content', 'amusement_news', "sport_news", "technology_news",
+    "inter_news", "story_news", "health_news", "apple_news"
+]
+var num = 0;
 var getNews = function() {
     //首页新闻
-    this.channle = 'fisrtpage';
     this.getFirstPage = function() {
+        num = 0;
         $.ajax({
             url: 'http://apis.baidu.com/txapi/weixin/wxhot',
             type: "GET",
@@ -17,7 +21,7 @@ var getNews = function() {
             },
             success: function(data) {
                 for (var i = 0; i < data.newslist.length; i++) {
-                    putNews(data.newslist[i]);
+                    putNews(data.newslist[i], channles[num]);
                 }
             },
             error: function(err) {
@@ -27,6 +31,7 @@ var getNews = function() {
     };
     //奇闻新闻
     this.getStoryNews = function() {
+        num = 1;
         $.ajax({
             url: 'http://apis.baidu.com/txapi/qiwen/qiwen',
             type: "GET",
@@ -39,7 +44,7 @@ var getNews = function() {
             },
             success: function(data) {
                 for (var i = 0; i < data.newslist.length; i++) {
-                    putNews(data.newslist[i]);
+                    putNews(data.newslist[i], channles[num]);
                 }
             },
             error: function(err) {
@@ -61,7 +66,7 @@ var getNews = function() {
             },
             success: function(data) {
                 for (var i = 0; i < data.newslist.length; i++) {
-                    putNews(data.newslist[i]);
+                    putNews(data.newslist[i], channles[num]);
                 }
             },
             error: function(err) {
@@ -71,6 +76,7 @@ var getNews = function() {
     };
     //科技新闻
     this.getTechnology = function() {
+        num = 3;
         $.ajax({
             url: 'http://apis.baidu.com/txapi/keji/keji',
             type: "GET",
@@ -83,7 +89,7 @@ var getNews = function() {
             },
             success: function(data) {
                 for (var i = 0; i < data.newslist.length; i++) {
-                    putNews(data.newslist[i]);
+                    putNews(data.newslist[i], channles[num]);
                 }
             },
             error: function(err) {
@@ -93,6 +99,7 @@ var getNews = function() {
     };
     //娱乐新闻
     this.getAmusement = function() {
+        num = 4
         $.ajax({
             url: 'http://apis.baidu.com/txapi/huabian/newtop',
             type: "GET",
@@ -105,7 +112,7 @@ var getNews = function() {
             },
             success: function(data) {
                 for (var i = 0; i < data.newslist.length; i++) {
-                    putNews(data.newslist[i]);
+                    putNews(data.newslist[i], channles[num]);
                 }
             },
             error: function(err) {
@@ -115,6 +122,7 @@ var getNews = function() {
     };
     //国际新闻
     this.getInter = function() {
+        num = 5;
         $.ajax({
             url: 'http://apis.baidu.com/txapi/world/world',
             type: "GET",
@@ -127,7 +135,7 @@ var getNews = function() {
             },
             success: function(data) {
                 for (var i = 0; i < data.newslist.length; i++) {
-                    putNews(data.newslist[i]);
+                    putNews(data.newslist[i], channles[num]);
                 }
             },
             error: function(err) {
@@ -137,6 +145,7 @@ var getNews = function() {
     };
     //苹果新闻
     this.getApple = function() {
+        num = 6
         $.ajax({
             url: 'http://apis.baidu.com/txapi/apple/apple',
             type: "GET",
@@ -149,7 +158,7 @@ var getNews = function() {
             },
             success: function(data) {
                 for (var i = 0; i < data.newslist.length; i++) {
-                    putNews(data.newslist[i]);
+                    putNews(data.newslist[i], channles[num]);
                 }
             },
             error: function(err) {
@@ -159,6 +168,7 @@ var getNews = function() {
     };
     //生活与健康新闻
     this.getHealth = function() {
+        num = 7;
         $.ajax({
             url: 'http://apis.baidu.com/txapi/health/health',
             type: "GET",
@@ -171,7 +181,7 @@ var getNews = function() {
             },
             success: function(data) {
                 for (var i = 0; i < data.newslist.length; i++) {
-                    putNews(data.newslist[i]);
+                    putNews(data.newslist[i], channles[num]);
                 }
             },
             error: function(err) {
@@ -181,14 +191,14 @@ var getNews = function() {
     };
 };
 
-function putNews(data) {
+function putNews(data, channle) {
+    var news_content = document.getElementById(channle);
     if (data.picUrl == '') {
         data.picUrl = 'img/nopic.jpg';
     }
     var news_link = document.createElement('a');
     news_link.setAttribute('href', data.url);
     news_link.className = 'link-news';
-    var news_content = document.getElementById('news_content');
     news_link.innerHTML = '<div class="news-div"><div class="news-con">' +
         '<div class="pic-div"><img class="news-pic" src=' + data.picUrl + '/></div>' +
         '<div class="news-title">' + data.title + '</div><span class="news-description">' + data.description + '</span><div class="news-del"><img src="img/delete.png"></div></div></div>'
@@ -201,19 +211,29 @@ function putNews(data) {
     }
 }
 var newsApp = new getNews();
-var wechat = document.getElementById('wechat');
-var story = document.getElementById('story');
-var sport = document.getElementById('sport');
-var technology = document.getElementById('technology');
-var inter = document.getElementById('inter');
-var apple = document.getElementById('apple');
-var health = document.getElementById('health');
-var amusement = document.getElementById('amusement');
-// wechat.onclick = newsApp.getFirstPage;
-// story.onclick = newsApp.getStoryNews;
-// sport.onclick = newsApp.getSportNews;
-// technology.onclick = newsApp.getTechnology;
-// amusement.onclick = newsApp.getAmusement;
-// inter.onclick = newsApp.getInter;
-// apple.onclick = newsApp.getApple;
-// health.onclick = newsApp.getHealth;
+window.onload = newsApp.getFirstPage;
+$(document).on("pagebeforeshow", "#main", function() {
+    $('#main').innerHTML = '';
+    return newsApp.getFirstPage();
+});
+$(document).on("pagebeforeshow", "#main2", function() {
+    return newsApp.getAmusement();
+});
+$(document).on("pagebeforeshow", "#main3", function() {
+    return newsApp.getSportNews();
+});
+$(document).on("pagebeforeshow", "#main4", function() {
+    return newsApp.getTechnology();
+});
+$(document).on("pagebeforeshow", "#main5", function() {
+    return newsApp.getInter();
+});
+$(document).on("pagebeforeshow", "#main6", function() {
+    return newsApp.getStoryNews();
+});
+$(document).on("pagebeforeshow", "#main7", function() {
+    return newsApp.getHealth();
+});
+$(document).on("pagebeforeshow", "#main8", function() {
+    return newsApp.getApple();
+});
