@@ -1,55 +1,82 @@
-body{
+body {
     font-family: 微软雅黑;
 }
-.news-div{
+
+.news-div {
     border-bottom: 1px solid #E1EACD;
 }
-.news-con{
-    height:65px;
-    width: 305px;
+
+.news-con {
+    height: 65px;
 }
-.pic-div{
+
+.pic-div {
     display: inline-block;
     width: 100px;
     height: 60px;
 }
-.news-pic{
+
+.news-pic {
     height: 100%;
     width: 100%;
 }
-.news-title{
+
+.news-title {
     display: inline-block;
-    width: 200px;
+    width: 65%;
     font-size: 12px;
     float: right;
     color: black;
 }
-.news-description{
+
+.news-description {
     display: inline-block;
     position: relative;
-    left: 105px;
-    top: -24px;
+    left: 110px;
+    top: -21px;
     font-size: 10px;
     color: lightgray;
 }
-.news-del img{
+
+.news-del img {
     width: 20px;
     height: 20px;
 }
-.news-del{
+
+.news-del {
     position: relative;
     left: 282px;
     top: -40px;
     width: 25px;
     height: 25px;
 }
-.news-del:hover{
+
+.news-del:hover {
     cursor: pointer;
 }
+
 .link-news {
     cursor: pointer;
     color: black;
 }
-button{
+
+button {
     width: 16%;
 }
+.ui-page-theme-a .ui-btn {
+    border: 1px solid #ECFFFB;!important;
+    background-color: #B4F1F1; !important;
+    color: #2D767F;!important;
+    border-radius: 10px; !important;
+    font-weight: normal;
+}
+.ui-page-theme-a:hover .ui-btn:hover {
+    border: 1px solid #ECFFFB;!important;
+    background-color: #2D767F; !important;
+    color: #B4F1F1;!important;
+    border-radius: 10px; !important;
+    font-weight: 100;
+}
+
+
+

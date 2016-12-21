@@ -198,11 +198,11 @@ function putNews(data, channle) {
         data.picUrl = 'img/nopic.jpg';
     }
     var news_link = document.createElement('a');
-    news_link.setAttribute('href', data.url);
+    //news_link.setAttribute('href', data.url);
     news_link.className = 'link-news';
     news_link.innerHTML = '<div class="news-div"><div class="news-con">' +
         '<div class="pic-div"><img class="news-pic" src=' + data.picUrl + '/></div>' +
-        '<div class="news-title">' + data.title + '</div><span class="news-description">' + data.description + '</span><div class="news-del"><img src="img/delete.png"></div></div></div>'
+        '<div class="news-title">' + data.title + '</div><span class="news-description">' + data.description + '</span><div class="news-del"></div></div></div>'
     news_content.appendChild(news_link);
     var news_img = document.getElementsByTagName('img');
     for (var i = 0; i < news_img.length; i++) {
@@ -244,4 +244,7 @@ $(document).on("pagebeforeshow", "#main7", function() {
 $(document).on("pagebeforeshow", "#main8", function() {
     $('#main8').innerHTML = '';
     return newsApp.getApple();
+});
+$(window).on("orientationchange",function(){
+   return false;
 });
